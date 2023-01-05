@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>{%block title %} {% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block">
+
+        <div class="row align-items-center bg-white py-3 px-lg-5">
+            <div class="col-lg-4">
+                <a href="index.html" class="navbar-brand p-0 d-none d-lg-block">
+                    <h1 class="m-0 display-4 text-uppercase text-primary">DS<span class="text-secondary font-weight-normal">Cinema</span></h1>
+                </a>
+            </div>
+            <div class="col-lg-8 text-center text-lg-right">
+               
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active">Trang chủ</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Phim</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="#" class="dropdown-item">Đang chiếu</a>
+                            <a href="#" class="dropdown-item">Sắp chiếu</a>
+                        </div>
+                    </div>                    
+                    <a href="single.html" class="nav-item nav-link">Về chúng tôi</a>                    
+                    <a href="category.html" class="nav-item nav-link">Sự kiên</a>
+                    <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
+                </div>
+                <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
+                    <input type="text" class="form-control border-0" placeholder="Nhập tên phim muốn tìm kiếm">
+                    <div class="input-group-append">
+                        <button class="input-group-text bg-primary text-dark border-0 px-3"><i
+                                class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    {% block content %}
+    {% endblock %}
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
+        <div class="row py-4">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Chăm sóc khách hàng</h5>
+                <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>### Lê Văn Việt, Thủ Đức</p>
+                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+### ### ###</p>
+                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>dscinema@gmail.com</p>
+                <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Kết nối với chúng tôi</h6>
+                
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">DS Cinema</h5>
+                <a href = "#" style= "color: #9A9DA2"><p class="font-weight-medium">Về chúng tôi</p></a>
+                <a href = "#" style= "color: #9A9DA2"><p class="font-weight-medium">Liên hệ</p></a>
+                                
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Điều khoản sử dụng</h5>
+                <a href = "#" style= "color: #9A9DA2"><p class="font-weight-medium">Chính sách bảo mật</p></a>
+                <a href = "#" style= "color: #9A9DA2"><p class="font-weight-medium">Chính sách thanh toán</p></a>               
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Kết nối với chúng tôi</h5>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square" href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <br>
+                <img src= "{% static 'img/cong-thuong.png' %}">
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
+        <p class="m-0 text-center">&copy; <a href="#">DSCinema - 19DTHA1</a>. All Rights Reserved. 
+		
+		<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+		Design by <a href="#">DVS</a></p>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
