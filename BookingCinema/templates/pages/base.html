@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{%block title %} {% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="{% static 'pages/img/favicon.ico' %}" rel="icon">
+
+
+    {% block cssblock %}    
+    {% endblock %}
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block">
+
+        <div class="row align-items-center bg-white py-3 px-lg-5">
+            <div class="col-lg-4">
+                <a href="index.html" class="navbar-brand p-0 d-none d-lg-block">
+                    <h1 class="m-0 display-4 text-uppercase text-primary">DS<span class="text-secondary font-weight-normal">Cinema</span></h1>
+                </a>
+            </div>
+            <div class="col-lg-8 text-center text-lg-right">
+               
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    {% include "pages/navbar.html" %}
+    <!-- Navbar -->
+
+    {% block content %}
+    {% endblock %}
+
+
+    <!-- Footer Start -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+
+    {% block jsblock %}    
+    {% endblock %}
+    {% include "pages/footer.html" %}
+</body>
+
+</html>
