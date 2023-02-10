@@ -27,13 +27,13 @@ Home
             <div class="col-lg-12 px-0">
                 <div class="owl-carousel main-carousel position-relative">
                 {% for item in movies %}
-                    <div class="position-relative overflow-hidden" style="height: 500px;">
+                    <div class="position-relative overflow-hidden" style="height: 85vh; position: relative; background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important;">
                         <img class="img-fluid h-100" src="{{ item.image.url }}" style="object-fit: cover;">
                         <div class="overlay">
                             <div class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                     href="">Business</a>
-                                <p class= "text-white">Ngày công chiếu: {{item.release_date|date:'Y-m-d'}}</p>
+                                <p class= "text-white">Ngày công chiếu: {{item.release_date|date:'d-m-Y'}}</p>
                             </div>
                             <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">{{item.movie_name}}</a>
                         </div>
@@ -58,7 +58,7 @@ Home
             <div class="owl-carousel carousel-item-4 position-relative">
 
             {% for item in movies %}
-                <div class="position-relative overflow-hidden" style="height: 300px;">
+                <div class="position-relative overflow-hidden" style="height: 390px;">
                     <img class="img-fluid h-100" src="{{ item.image.url }}" style="object-fit: cover;">
                     <div class="overlay">
                         <div class="mb-2">
@@ -68,9 +68,8 @@ Home
                                 <p class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">{{item.time_of_movie}} phút</p>
                             {% else %}
                                 <p class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">Chưa xác định</p>
-                            {% endif %}
-                            
-                            <small class="text-white">{{item.release_date|date:'Y-m-d' }}</small>
+                            {% endif %}                            
+                            <small class="text-white">{{item.release_date|date:'d-m-Y' }}</small>
                         </div>
                         <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.movie_name}}</a>
                     </div>
@@ -89,17 +88,25 @@ Home
                 <a href = ""><span>Show All</span> </a>
             </div>
             <div class="owl-carousel carousel-item-4 position-relative">
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="static/img/news-700x435-1.jpg" style="object-fit: cover;">
+            {% for item in movies %}
+                <div class="position-relative overflow-hidden" style="height: 390px;">
+                    <img class="img-fluid h-100" src="{{ item.image.url }}" style="object-fit: cover;">
                     <div class="overlay">
                         <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                            {% comment %} <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                href="">Business</a> {% endcomment %}
+                            {% if item.time_of_movie %}
+                                <p class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">{{item.time_of_movie}} phút</p>
+                            {% else %}
+                                <p class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">Chưa xác định</p>
+                            {% endif %}
+                            
+                            <small class="text-white">{{item.release_date|date:'d-m-Y' }}</small>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.movie_name}}</a>
                     </div>
-                </div>
+                </div> 
+            {% endfor %}
             </div>
         </div>
     </div>
@@ -113,17 +120,18 @@ Home
                 <a href = ""><span>Show All</span> </a>
             </div>
             <div class="owl-carousel carousel-item-4 position-relative">
-                <div class="position-relative overflow-hidden" style="height: 300px;">
-                    <img class="img-fluid h-100" src="static/img/news-700x435-1.jpg" style="object-fit: cover;">
+            {% for item in news %}
+                <div class="position-relative overflow-hidden" style="height: 390px;">
+                    <img class="img-fluid h-100" src="{{item.image.url}}" style="object-fit: cover;">
                     <div class="overlay">
                         <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                href="">Business</a>
-                            <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                            <p class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">Thời gian đăng: {{item.create_at | date:'d-m-Y'}}</p>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.title}}</a>
                     </div>
                 </div>
+            {% endfor %}
+                
             </div>
         </div>
     </div>
