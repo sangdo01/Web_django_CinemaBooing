@@ -17,25 +17,58 @@ Home
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'pages/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'pages/css/movie.css' %}" rel="stylesheet">
+
 
 {% endblock %}
 
 {% block content %}
     <!-- Main Slider Start -->
-    <div class="container-fluid">
+   <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 px-0">
                 <div class="owl-carousel main-carousel position-relative">
                 {% for item in movies %}
-                    <div class="position-relative overflow-hidden" style="height: 85vh; position: relative; background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important;">
-                        <img class="img-fluid h-100" src="{{ item.image.url }}" style="object-fit: cover;">
+                    <div class="position-relative overflow-hidden" style="height: 83vh; position: relative; background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important;">
+                        <img class="img-fluid h-100" src="{{ item.banner.url }}" style="object-fit: fill;">
                         <div class="overlay">
-                            <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
-                                <p class= "text-white">Ngày công chiếu: {{item.release_date|date:'d-m-Y'}}</p>
+                            <div class="col col-lg-7">
+                                <div class="mb-2">
+                                    <div>
+                                        <ul class="list-group list-group-horizontal">
+                                        {% if item.time_of_movie %}
+                                            <li class= "list-group-item" style ="color: white">{{item.time_of_movie}} phút</li>                                    
+                                        {% else %}
+                                            <li class="list-group-item" style ="color: white">Chưa xác định</li>  
+                                        {% endif %}
+                                            <li class="list-group-item" style ="color: white">{{item.release_date|date:'d-m-Y'}}</li>
+                                        </ul>
+                                    </div>
+                                    <ul class="list-group list-group-horizontal">
+                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" >Link 1 dsdsafsafs</a></li>
+                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">Link 2</a></li>
+                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" >Link 3</a></li>
+                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" >Link 4</a></li>
+                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">Link 5</a></li>
+                                    </ul>
+                                    
+                                </div>
+                                <div>
+                                    <p style="color: white; max-wieght: 400px; text-size: 90px">{{item.content|truncatewords:77}}</p>
+                                </div>
+                                <div class="button-chitiet-trailer">
+                                        <a href="#" onclick="toggleVideo();"><i class="fa fa-play" aria-hidden ="true">Trailer</i></a>
+                                        <a href="#"><i class="fa fa-plus" aria-hidden ="true">Chi tiết</i></a>
+                                </div>
+                            
+                                <div class="trailer">
+                                    <video src="https://www.youtube.com/watch?v=pFen0BlwJaI&list=RDpFen0BlwJaI&start_radio=1" control="true" autoplay="true"></video>
+                                    <img src="{% static 'pages/img/cancel.png' %}" class="close" onclick="toggleVideo();">
+                                </div>
+                                
+                                <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">{{item.movie_name|truncatewords:20}}</a>
+
                             </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">{{item.movie_name}}</a>
                         </div>
                     </div>
                 {% endfor %}                    
@@ -46,7 +79,6 @@ Home
         </div>
     </div>
     <!-- Main Slider End -->
-
 
     <!-- Movie Slider Start -->
     <div class="container-fluid pt-5 mb-3">
@@ -71,7 +103,7 @@ Home
                             {% endif %}                            
                             <small class="text-white">{{item.release_date|date:'d-m-Y' }}</small>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.movie_name}}</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.movie_name|truncatewords:20}}</a>
                     </div>
                 </div>            
             {% endfor %}
@@ -147,6 +179,9 @@ Home
 
     <!-- Template Javascript -->
     <script src="{% static 'pages/js/main.js' %}"></script>
+    <!-- Sileshow Javascript -->
+
+
 {% endblock %}
 
 

@@ -23,8 +23,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls'), name= 'home'),
+    path('', include('home.urls')),
     path('user/', include('user.urls')),
+    path('info/', include('information.urls')),
 ]
 
 # Serving the media files in development mode

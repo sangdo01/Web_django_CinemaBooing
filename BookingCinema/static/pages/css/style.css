@@ -5034,8 +5034,9 @@ a.badge-dark:focus, a.badge-dark.focus {
   position: relative;
   display: block;
   padding: 0.75rem 1.25rem;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  /* background-color: #fff;
+  background-color: #fff; */
+  /* border: 1px solid rgba(0, 0, 0, 0.125); */
 }
 
 .list-group-item.disabled, .list-group-item:disabled {
@@ -9675,3 +9676,6 @@ h6,
   padding: 0;
   list-style-type: none;
 }
+
+
+

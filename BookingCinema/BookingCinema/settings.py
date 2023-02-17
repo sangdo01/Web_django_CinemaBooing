@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # my apps
     'home',
     'information',
     'movie',
@@ -74,6 +76,8 @@ TEMPLATES = [
         },
     },
 ]
+
+# AUTH_USER_MODEL = 'user.Account'
 
 WSGI_APPLICATION = 'BookingCinema.wsgi.application'
 

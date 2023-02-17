@@ -23,12 +23,13 @@
 
 <link href="{% static 'pages/css/login_register.css' %}" rel="stylesheet" />
 
-{% endblock %} {% block content %}
+{% endblock %} 
+{% block content %}
 <!-- Login Start -->
 <div class="container-fluid mt-5 pt-3">
   <div class="container">
  
-      <form action="user/login/" method="post">
+      <form action="" method="post">
       {% csrf_token %}
         <div class="container">
           <h1>Đăng Nhập</h1>

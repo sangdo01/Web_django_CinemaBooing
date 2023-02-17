@@ -24,7 +24,7 @@ from .forms import CreateUserForm
 #     context = {'form': form}
 #     return render(request, 'pages/register.html', context)
 
-def register(request):
+def registerUser(request):
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
@@ -38,7 +38,7 @@ def register(request):
 
 
 
-def login(request):
+def loginUser(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -46,9 +46,13 @@ def login(request):
         if user is not None:
             login(request, user)
             return redirect('home')
+        else:
+            messages.info(request, 'Tài khoản hoặc mật khẩu không chính xác')
+
     context = {}
     return render(request, 'pages/login.html', context)
 
 
-def signout(request):
-    pass
+def logoutUser(request):
+    logout(request)
+    return redirect('home')

@@ -14,10 +14,9 @@ def Contact(request):
 
 class HomeView(View):
     def get(self, request):
+        context = {}
         movies = Movie.objects.all().order_by("release_date")
-        news = News.objects.all()
-        context = {
-            'movies': movies,
-            'news': news,
-        }
+        news = News.objects.all().order_by("create_at")
+        context['movies'] = movies
+        context['news'] = news
         return render(request, 'pages/index.html', context)
