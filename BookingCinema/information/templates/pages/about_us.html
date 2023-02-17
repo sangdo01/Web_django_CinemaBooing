@@ -1,0 +1,142 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% block title %} About Us {%endblock title %} 
+{% block cssblock %}
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+  rel="stylesheet"/>
+
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+  rel="stylesheet"/>
+
+<!-- Libraries Stylesheet -->
+<link
+  href="{% static 'pages/lib/owlcarousel/assets/owl.carousel.min.css' %}"
+  rel="stylesheet"/>
+<!-- css for about_us page Stylesheet -->
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="{% static 'pages/css/style.css' %}" rel="stylesheet" />
+<link href="{% static 'pages/css/about.css' %}" rel="stylesheet" />
+<link href="{% static 'pages/css/login_register.css' %}" rel="stylesheet" />
+
+
+
+{% endblock %}
+{% block content %}
+<div class="container-fluid mt-5 pt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col"> 
+              
+                <h2>Chúng tôi là DS Cinema (rạp phim DS)</h2>
+                <div class="info-text">
+                    <p>
+                        Là một trong những cụm rạp chiếu phim và là nhà phát hành, cụm rạp chiếu phim lớn nhất Việt Nam. Mục tiêu của chúng tôi là trở thành hình mẫu công ty điển hình đóng góp cho sự phát triển không ngừng của ngành công nghiệp điện ảnh Việt Nam.
+                    </p>
+                    <p>
+                        DS Cinema Việt Nam sẽ tiếp tục cuộc hành trình bền bỉ trong việc góp phần xây dựng một nền công nghiệp điện ảnh Việt Nam ngày càng vững mạnh hơn cùng các khách hàng tiềm năng, các nhà làm phim, các đối tác kinh doanh uy tín, và cùng toàn thể xã hội.
+                    </p>
+                    <p>Hiện chúng tôi đã có các chi nhánh:</p>
+                     <span><p style="font-weight:bold">rap cgv 1</span>
+                     <span><p style="font-weight:bold">rap cgv 2</span>
+                     <span><p style="font-weight:bold">rap cgv 3</span>
+                                          
+                </div>                    
+            </div>
+            <div class="col">
+                <img src="{% static 'pages/img/about-1.png' %}" alt="about" style="width: fit-content; height: 400px;">
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 40px">
+            <div class="col-5">
+                <div class="info-text">
+                    <h5>Sự phát triển của DS Cinema</h5>
+                    <p>Được thành lập từ năm 2023 cho đến nay</p>
+                </div>                
+            </div>
+
+            <div class="col change-color-img" style="magrin-left: 50px">
+                <img src="{% static 'pages/img/about-counter01.png' %}">  
+                <div class="counter-content">
+                    <h3>7+</h3>
+                </div>              
+                <div class="info__text-blue">
+                    <p>Đối tác</p>
+                </div>
+            </div>
+            <div class="col change-color-img" >
+                <img src="{% static 'pages/img/about-counter02.png' %}">
+                <div class="counter-content">
+                    <h3>7+</h3>
+                </div> 
+                <div class="info__text-blue">
+                    <p>Cụm</p>
+                </div>                
+            </div>
+            <div class="col change-color-img">
+                <img src="{% static 'pages/img/about-counter03.png' %}">
+                <div class="counter-content">
+                    <h3>7+</h3>
+                </div> 
+                <div class="info__text-blue">
+                    <p>Vùng và thành phố</p>
+                </div>
+                
+            </div>
+            <div class="col change-color-img">
+                <img src="{% static 'pages/img/about-counter04.png' %}">
+                <div class="counter-content">
+                    <h3>7+</h3>
+                </div> 
+                <div class="info__text-blue">
+                    <p>Màn chiếu mỗi cụm</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="responsive">
+                <div class="gallery">                    
+                    <img src="{% static 'pages/img/about-2.jpg' %}" alt="Cinque Terre" width="600" height="400">
+                    <div class="desc">Add a description of the image here</div>
+                </div>
+            </div>
+
+
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{% static 'pages/img/about-3.jpg' %}" alt="Forest" width="600" height="400">
+                    <div class="desc">Add a description of the image here</div>
+                </div>
+            </div>
+
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{% static 'pages/img/about-4.jpg' %}" alt="Northern Lights" width="600" height="400">
+                    <div class="desc">Add a description of the image here</div>
+                </div>
+            </div>
+
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{% static 'pages/img/about-5.jpg' %}" alt="Mountains" width="600" height="400">
+                    <div class="desc">Add a description of the image here</div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+{% endblock content %}
+
+
+
+

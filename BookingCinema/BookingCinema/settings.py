@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # my apps
     'home',
     'information',
     'movie',
@@ -75,6 +77,8 @@ TEMPLATES = [
     },
 ]
 
+# AUTH_USER_MODEL = 'user.Account'
+
 WSGI_APPLICATION = 'BookingCinema.wsgi.application'
 
 
@@ -84,7 +88,7 @@ WSGI_APPLICATION = 'BookingCinema.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
     }
 }
 
@@ -123,7 +127,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
