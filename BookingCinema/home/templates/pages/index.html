@@ -18,7 +18,9 @@ Home
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'pages/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'pages/css/movie.css' %}" rel="stylesheet">
-
+    <style>
+        
+    </style>
 
 {% endblock %}
 
@@ -30,31 +32,35 @@ Home
                 <div class="owl-carousel main-carousel position-relative">
                 {% for item in movies %}
                     <div class="position-relative overflow-hidden" style="height: 83vh; position: relative; background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important;">
-                        <img class="img-fluid h-100" src="{{ item.banner.url }}" style="object-fit: fill;">
+                        <img class="img-fluid h-100" src="{{ item.banner.url }}" style="object-fit: cover">
                         <div class="overlay">
                             <div class="col col-lg-7">
                                 <div class="mb-2">
                                     <div>
                                         <ul class="list-group list-group-horizontal">
                                         {% if item.time_of_movie %}
-                                            <li class= "list-group-item" style ="color: white">{{item.time_of_movie}} phút</li>                                    
+                                            <li class= "list-group-item" style ="color: white; font-size: 20px">{{item.time_of_movie}} phút</li>                                    
                                         {% else %}
-                                            <li class="list-group-item" style ="color: white">Chưa xác định</li>  
+                                            <li class="list-group-item" style ="color: white; font-size: 20px">Chưa xác định</li>  
                                         {% endif %}
-                                            <li class="list-group-item" style ="color: white">{{item.release_date|date:'d-m-Y'}}</li>
+                                            <li class="list-group-item" style ="color: white; font-size: 20px">{{item.release_date|date:'d-m-Y'}}</li>
                                         </ul>
                                     </div>
-                                    <ul class="list-group list-group-horizontal">
-                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" >Link 1 dsdsafsafs</a></li>
-                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">Link 2</a></li>
-                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" >Link 3</a></li>
-                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" >Link 4</a></li>
-                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">Link 5</a></li>
-                                    </ul>
+                                    <div class="menu__movie-genre">
+                                        <ul class="movie-cate">                                       
+                                            <li><a>Link 111111111111111</a></li>
+                                            <li><a>Link 2</a></li>
+                                            <li><a>Link 1</a></li>
+                                            <li><a>Link 2</a></li>
+                                            <li><a>Link 2</a></li>
+                                            <li><a>Link 1</a></li>
+                                            <li><a>Link 2</a></li>
+                                        </ul>
+                                    </div>
                                     
                                 </div>
                                 <div>
-                                    <p style="color: white; max-wieght: 400px; text-size: 90px">{{item.content|truncatewords:77}}</p>
+                                    <p style="color: #DCDCDC; max-wieght: 400px; font-size: 20px">{{item.content|truncatewords:70}}</p>
                                 </div>
                                 <div class="button-chitiet-trailer">
                                         <a href="#" onclick="toggleVideo();"><i class="fa fa-play" aria-hidden ="true">Trailer</i></a>
@@ -80,7 +86,7 @@ Home
     </div>
     <!-- Main Slider End -->
 
-    <!-- Movie Slider Start -->
+    <!-- Movie Nowshowing Start -->
     <div class="container-fluid pt-5 mb-3">
         <div class="container">
             <div class="section-title">
@@ -103,16 +109,16 @@ Home
                             {% endif %}                            
                             <small class="text-white">{{item.release_date|date:'d-m-Y' }}</small>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.movie_name|truncatewords:20}}</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.movie_name|truncatewords:5}}</a>
                     </div>
                 </div>            
             {% endfor %}
             </div>
         </div>
     </div>
-    <!-- Movie News Slider End -->
+    <!-- Movie NowShowing End -->
 
-    <!-- Comming soon Slider Start -->
+    <!-- Comming soon Start -->
     <div class="container-fluid pt-5 mb-3">
         <div class="container">
             <div class="section-title">
@@ -135,14 +141,14 @@ Home
                             
                             <small class="text-white">{{item.release_date|date:'d-m-Y' }}</small>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.movie_name}}</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.movie_name|truncatewords:5}}</a>
                     </div>
                 </div> 
             {% endfor %}
             </div>
         </div>
     </div>
-    <!-- Comming soon Slider End -->
+    <!-- Comming soon End -->
 
     <!-- Even Slider Start -->
     <div class="container-fluid pt-5 mb-3">
@@ -159,7 +165,7 @@ Home
                         <div class="mb-2">
                             <p class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">Thời gian đăng: {{item.create_at | date:'d-m-Y'}}</p>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.title}}</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.title|truncatewords:5}}</a>
                     </div>
                 </div>
             {% endfor %}

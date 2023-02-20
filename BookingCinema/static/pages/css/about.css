@@ -15,9 +15,6 @@ h3{
     color:  #FFCC00;
 }
 
-p{
-    
-}
 .info-text {
     border: 1px solid gray;
     padding: 8px;
@@ -54,6 +51,7 @@ div.gallery img {
 div.desc {
     padding: 15px;
     text-align: center;
+    color: #FFCC00;
 }
 
 * {
@@ -63,7 +61,7 @@ div.desc {
 .responsive {
     padding: 0 6px;
     float: left;
-    width: 24.99999%;
+    width: 24.99999%;    
 }
 
 @media only screen and (max-width: 700px) {
