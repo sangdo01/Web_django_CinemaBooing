@@ -5,7 +5,7 @@ Home
 {% endblock title %}
 
 {% block cssblock %}
-    <!-- Google Web Fonts -->
+    {% comment %} <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
 
@@ -16,9 +16,11 @@ Home
     <link href="{% static 'pages/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{% static 'pages/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'pages/css/style.css' %}" rel="stylesheet"> {% endcomment %}
     <link href="{% static 'pages/css/movie.css' %}" rel="stylesheet">
-
+    <style>
+        
+    </style>
 
 {% endblock %}
 
@@ -28,37 +30,37 @@ Home
         <div class="row">
             <div class="col-lg-12 px-0">
                 <div class="owl-carousel main-carousel position-relative">
-                {% for item in movies %}
+                {% for item in movies_slider %}
                     <div class="position-relative overflow-hidden" style="height: 83vh; position: relative; background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important;">
-                        <img class="img-fluid h-100" src="{{ item.banner.url }}" style="object-fit: fill;">
+                        <img class="img-fluid h-100" src="{{ item.banner.url }}" style="object-fit: cover;">
                         <div class="overlay">
                             <div class="col col-lg-7">
                                 <div class="mb-2">
                                     <div>
                                         <ul class="list-group list-group-horizontal">
                                         {% if item.time_of_movie %}
-                                            <li class= "list-group-item" style ="color: white">{{item.time_of_movie}} phút</li>                                    
+                                            <li class= "list-group-item" style ="color: white; font-size: 20px">{{item.time_of_movie}} phút</li>                                    
                                         {% else %}
-                                            <li class="list-group-item" style ="color: white">Chưa xác định</li>  
+                                            <li class="list-group-item" style ="color: white; font-size: 20px">Chưa xác định</li>  
                                         {% endif %}
-                                            <li class="list-group-item" style ="color: white">{{item.release_date|date:'d-m-Y'}}</li>
+                                            <li class="list-group-item" style ="color: white; font-size: 20px">{{item.release_date|date:'d-m-Y'}}</li>
                                         </ul>
                                     </div>
-                                    <ul class="list-group list-group-horizontal">
-                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" >Link 1 dsdsafsafs</a></li>
-                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">Link 2</a></li>
-                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" >Link 3</a></li>
-                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" >Link 4</a></li>
-                                        <li class="list-group-item"><a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">Link 5</a></li>
-                                    </ul>
+                                    <div class="menu__movie-genre">
+                                        <ul class="movie-cate">                                                                                   
+                                            <li><a>Link 111111111111111</a></li>
+                                            <li><a>Link 2</a></li>
+                                            <li><a>Link 1</a></li>                                            
+                                        </ul>
+                                    </div>
                                     
                                 </div>
                                 <div>
-                                    <p style="color: white; max-wieght: 400px; text-size: 90px">{{item.content|truncatewords:77}}</p>
+                                    <p style="color: #DCDCDC; max-wieght: 400px; font-size: 20px; text-align: justify;">{{item.content|truncatewords:70}}</p>
                                 </div>
                                 <div class="button-chitiet-trailer">
                                         <a href="#" onclick="toggleVideo();"><i class="fa fa-play" aria-hidden ="true">Trailer</i></a>
-                                        <a href="#"><i class="fa fa-plus" aria-hidden ="true">Chi tiết</i></a>
+                                        <a href="{% url 'moviedetail' item.id %}"><i class="fa fa-plus" aria-hidden ="true">Chi tiết</i></a>
                                 </div>
                             
                                 <div class="trailer">
@@ -66,7 +68,7 @@ Home
                                     <img src="{% static 'pages/img/cancel.png' %}" class="close" onclick="toggleVideo();">
                                 </div>
                                 
-                                <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">{{item.movie_name|truncatewords:20}}</a>
+                                <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="{% url 'moviedetail' item.id %}">{{item.movie_name|truncatewords:20}}</a>
 
                             </div>
                         </div>
@@ -80,16 +82,16 @@ Home
     </div>
     <!-- Main Slider End -->
 
-    <!-- Movie Slider Start -->
+    <!-- Movie Nowshowing Start -->
     <div class="container-fluid pt-5 mb-3">
         <div class="container">
             <div class="section-title">
                 <h4 class="m-0 text-uppercase font-weight-bold">PHIM ĐANG CHIẾU</h4>
-                <a href = ""><span>Show All</span> </a>
+                <a href = "{% url 'nowshowing' %}"><span>Show All</span> </a>
             </div>
             <div class="owl-carousel carousel-item-4 position-relative">
 
-            {% for item in movies %}
+            {% for item in movies_now %}
                 <div class="position-relative overflow-hidden" style="height: 390px;">
                     <img class="img-fluid h-100" src="{{ item.image.url }}" style="object-fit: cover;">
                     <div class="overlay">
@@ -103,24 +105,24 @@ Home
                             {% endif %}                            
                             <small class="text-white">{{item.release_date|date:'d-m-Y' }}</small>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.movie_name|truncatewords:20}}</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{% url 'moviedetail' item.id %}">{{item.movie_name|truncatewords:5}}</a>
                     </div>
                 </div>            
             {% endfor %}
             </div>
         </div>
     </div>
-    <!-- Movie News Slider End -->
+    <!-- Movie NowShowing End -->
 
-    <!-- Comming soon Slider Start -->
+    <!-- Comming soon Start -->
     <div class="container-fluid pt-5 mb-3">
         <div class="container">
             <div class="section-title">
                 <h4 class="m-0 text-uppercase font-weight-bold">PHIM SẮP CHIẾU</h4>
-                <a href = ""><span>Show All</span> </a>
+                <a href = "{% url 'comingsoon' %}"><span>Show All</span> </a>
             </div>
             <div class="owl-carousel carousel-item-4 position-relative">
-            {% for item in movies %}
+            {% for item in movies_comming %}
                 <div class="position-relative overflow-hidden" style="height: 390px;">
                     <img class="img-fluid h-100" src="{{ item.image.url }}" style="object-fit: cover;">
                     <div class="overlay">
@@ -135,21 +137,21 @@ Home
                             
                             <small class="text-white">{{item.release_date|date:'d-m-Y' }}</small>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.movie_name}}</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{% url 'moviedetail' item.id %}">{{item.movie_name|truncatewords:5}}</a>
                     </div>
                 </div> 
             {% endfor %}
             </div>
         </div>
     </div>
-    <!-- Comming soon Slider End -->
+    <!-- Comming soon End -->
 
     <!-- Even Slider Start -->
     <div class="container-fluid pt-5 mb-3">
         <div class="container">
             <div class="section-title">
                 <h4 class="m-0 text-uppercase font-weight-bold">SỰ KIỆN</h4>
-                <a href = ""><span>Show All</span> </a>
+                <a href = "{% url 'news' %}"><span>Show All</span> </a>
             </div>
             <div class="owl-carousel carousel-item-4 position-relative">
             {% for item in news %}
@@ -159,7 +161,7 @@ Home
                         <div class="mb-2">
                             <p class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2">Thời gian đăng: {{item.create_at | date:'d-m-Y'}}</p>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{item.title}}</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{% url 'news-detail' item.id %}">{{item.title|truncatewords:5}}</a>
                     </div>
                 </div>
             {% endfor %}
@@ -169,9 +171,7 @@ Home
     </div>
     <!-- Even Slider End -->
 {% endblock content %}
-
-{% block jsblock %}
-    <!-- JavaScript Libraries -->
+{% comment %} <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'pages/lib/easing/easing.min.js' %}"></script>
@@ -179,7 +179,9 @@ Home
 
     <!-- Template Javascript -->
     <script src="{% static 'pages/js/main.js' %}"></script>
-    <!-- Sileshow Javascript -->
+    <!-- Sileshow Javascript --> {% endcomment %}
+{% block jsblock %}
+    
 
 
 {% endblock %}

@@ -4,4 +4,5 @@ from django.shortcuts import render
 
 def AboutUs(request):
     context = {}
+    # get list rap chieu
     return render(request, 'pages/about_us.html', context)

@@ -26,6 +26,8 @@ urlpatterns = [
     path('', include('home.urls')),
     path('user/', include('user.urls')),
     path('info/', include('information.urls')),
+    path('news/', include('news.urls')),
+    path('movies/', include('movie.urls')),
 ]
 
 # Serving the media files in development mode

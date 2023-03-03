@@ -71,3 +71,168 @@
     filter: invert(1);
     max-width: 30px;
 }
+
+
+
+
+
+/* css for  */
+.menu__movie-genre ul {
+    /*list-style-type: none;
+    text-align: center;*/
+
+    margin: 5px 15px 15px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.menu__movie-genre li {
+    /*color: #f1f1f1;
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: -5px;*/
+    list-style: none;
+    
+    color: white;
+    margin: 10px 0 0 0px;
+    padding: 0 0 0 20px;
+    font-size: 16px;
+    line-height: normal;
+    display: flex;
+    float: left;
+    align-items: center;
+    position: relative;
+}
+.menu__movie-genre a{
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    border-radius: 10px;
+    color: white;
+    background: #B22222;
+    padding: 2px 8px;
+}
+
+
+
+
+/*css for column card page nowshoing-comingsoon*/
+.card {
+  
+    box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    transition: background-color .3s, color .3s;
+  }
+  .card__img {
+    overflow: hidden;
+    
+   
+  }
+  .card__img img {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    transition: scale .3s;
+    width: 100%;
+    vertical-align: bottom;
+    
+  }
+  .card__title {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  .card__text {
+    margin-top: 15px;
+  }
+  .card__meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .card:hover {
+    background-color: #FFCC00;
+    color: #fff;
+  }
+  .card:hover img {
+    scale: 1.4;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .cards__item {
+    width: calc(100% / 3 - 60px / 3);
+    border-radius: 10px 10px 10px 10px;
+  }
+  .cards__item:not(:nth-child(3n + 1)) {
+    margin-left: 30px;
+  }
+  .cards__item:nth-child(n+4){
+    margin-top: 50px;
+  }
+  
+  /* CSS */
+  .all-item {
+    box-sizing: border-box;
+  }
+  
+  .cards__item a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  
+  
+  
+  /* css for footer item*/
+  .event-card__nav {
+    margin-top: 1rem;
+    /*   display: flex; */
+    /*  justify-content: space-evenly; */
+    /*  align-items: center; */
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    line-height: 3rem;
+  }
+  
+  .event-card__details {
+    border-radius: 0% 0% 0% 5vw;
+    border-radius: 0% 0% 0% var(--event-card-radius);
+    float: left;
+    width: 50%;
+    color: #fff;
+    background-color: #666;
+    text-decoration: none;
+  }
+  .event-card__details:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  .event-card__tickets {
+    border-radius: 0% 0% 5vw 0%;
+    border-radius: 0% 0% var(--event-card-radius) 0%;
+    float: right;
+    width: 50%;
+    color: #fff;
+    /* If the linear gradient is not available in a browser, this will give it a dark background color instead of just displaying on a */
+    background-color: #B22222;
+    background: -webkit-linear-gradient(to right, #87ceeb, #4682b4);
+    text-decoration: none;
+  }
+  .event-card__tickets:hover {
+    background-color: #fff;
+    color: #000;
+  }
+
+
+

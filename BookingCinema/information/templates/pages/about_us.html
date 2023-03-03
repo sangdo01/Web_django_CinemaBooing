@@ -2,29 +2,47 @@
 {% load static %}
 {% block title %} About Us {%endblock title %} 
 {% block cssblock %}
-<!-- Google Web Fonts -->
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link
-  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-  rel="stylesheet"/>
-
-<!-- Font Awesome -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
-  rel="stylesheet"/>
-
-<!-- Libraries Stylesheet -->
-<link
-  href="{% static 'pages/lib/owlcarousel/assets/owl.carousel.min.css' %}"
-  rel="stylesheet"/>
-<!-- css for about_us page Stylesheet -->
-
-<!-- Customized Bootstrap Stylesheet -->
-<link href="{% static 'pages/css/style.css' %}" rel="stylesheet" />
 <link href="{% static 'pages/css/about.css' %}" rel="stylesheet" />
 <link href="{% static 'pages/css/login_register.css' %}" rel="stylesheet" />
 
+<style>
 
+    /* Float four columns side by side */
+    .column-rate {
+    float: left;
+    width: 25%;
+    padding: 10px 10px;
+    }
+
+    .row-rate {margin: 0 -5px; width:5900px;}
+
+    /* Clear floats after the columns */
+    .row-rate:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+
+    /* Responsive columns */
+    @media screen and (max-width: 600px) {
+    .column-rate {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+    }
+    }
+
+    /* Style the counter cards */
+    .card-rate {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #444;
+    color: white;
+    }
+
+    .fafa-rate {font-size:100px;}
+</style>
 
 {% endblock %}
 {% block content %}
@@ -54,48 +72,43 @@
         </div>
 
         <div class="row" style="margin-top: 40px">
-            <div class="col-5">
+            <div class="col">
                 <div class="info-text">
                     <h5>Sự phát triển của DS Cinema</h5>
-                    <p>Được thành lập từ năm 2023 cho đến nay</p>
+                    <p>Được thành lập từ năm 2023 cho đến nay DS CINEMA sẽ tiếp tục cuộc hành trình bền bỉ trong việc góp phần xây dựng một nền công nghiệp điện ảnh Việt Nam ngày càng vững mạnh hơn cùng các khách hàng tiềm năng, các nhà làm phim, các đối tác kinh doanh uy tín, và cùng toàn thể xã hội.</p>
                 </div>                
             </div>
-
-            <div class="col change-color-img" style="magrin-left: 50px">
-                <img src="{% static 'pages/img/about-counter01.png' %}">  
-                <div class="counter-content">
-                    <h3>7+</h3>
-                </div>              
-                <div class="info__text-blue">
+            <div class="row-rate">
+                <div class="column-rate">
+                    <div class="card-rate">
+                    <p><i class="fa fa-user fa-rate"></i></p>
+                    <h3>11+</h3>
                     <p>Đối tác</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col change-color-img" >
-                <img src="{% static 'pages/img/about-counter02.png' %}">
-                <div class="counter-content">
-                    <h3>7+</h3>
-                </div> 
-                <div class="info__text-blue">
+
+                <div class="column-rate">
+                    <div class="card-rate">
+                    <p><i class="fa fa-check fa-rate"></i></p>
+                    <h3>55+</h3>
                     <p>Cụm</p>
-                </div>                
-            </div>
-            <div class="col change-color-img">
-                <img src="{% static 'pages/img/about-counter03.png' %}">
-                <div class="counter-content">
-                    <h3>7+</h3>
-                </div> 
-                <div class="info__text-blue">
-                    <p>Vùng và thành phố</p>
+                    </div>
                 </div>
                 
-            </div>
-            <div class="col change-color-img">
-                <img src="{% static 'pages/img/about-counter04.png' %}">
-                <div class="counter-content">
-                    <h3>7+</h3>
-                </div> 
-                <div class="info__text-blue">
+                <div class="column-rate">
+                    <div class="card-rate">
+                    <p><i class="fa fa-user fa-rate"></i></p>
+                    <h3>100+</h3>
+                    <p>Vùng và thành phố</p>
+                    </div>
+                </div>
+                
+                <div class="column-rate">
+                    <div class="card-rate">
+                    <p><i class="fa fa-desktop fa-rate"></i></p>
+                    <h3>100+</h3>
                     <p>Màn chiếu mỗi cụm</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,7 +116,7 @@
         <div class="row">
             <div class="responsive">
                 <div class="gallery">                    
-                    <img src="{% static 'pages/img/about-2.jpg' %}" alt="Cinque Terre" width="600" height="400">
+                    <img src="{% static 'pages/img/about-2.jpg' %}" alt="" width="400" height="400">
                     <div class="desc">Add a description of the image here</div>
                 </div>
             </div>
@@ -111,27 +124,26 @@
 
             <div class="responsive">
                 <div class="gallery">
-                    <img src="{% static 'pages/img/about-3.jpg' %}" alt="Forest" width="600" height="400">
+                    <img src="{% static 'pages/img/about-3.jpg' %}" alt="" width="400" height="400">
                     <div class="desc">Add a description of the image here</div>
                 </div>
             </div>
 
             <div class="responsive">
                 <div class="gallery">
-                    <img src="{% static 'pages/img/about-4.jpg' %}" alt="Northern Lights" width="600" height="400">
+                    <img src="{% static 'pages/img/about-4.jpg' %}" alt="" width="400" height="400">
                     <div class="desc">Add a description of the image here</div>
                 </div>
             </div>
 
             <div class="responsive">
                 <div class="gallery">
-                    <img src="{% static 'pages/img/about-5.jpg' %}" alt="Mountains" width="600" height="400">
+                    <img src="{% static 'pages/img/about-5.jpg' %}" alt="" width="280" height="400">
                     <div class="desc">Add a description of the image here</div>
                 </div>
             </div>
 
         </div>
-
 
     </div>
 </div>
