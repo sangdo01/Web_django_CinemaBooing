@@ -26,7 +26,7 @@ class Movie(models.Model):
     release_date = models.DateTimeField(null= True)
     # is_showing = 2(cooming soon)
     is_showing = models.IntegerField(default= 2)
-    # starus = 1(show movie), = 2 (hide movie)
+    # status = 1(show movie), = 2 (hide movie)
     status = models.IntegerField(default= 2)
     directors_id = models.ForeignKey(Directors, on_delete= models.CASCADE, null= True)
 
@@ -60,10 +60,10 @@ class Movie_Actor(models.Model):
         return rs
 
 
-# class BinhLuan(models.Model):
-#     rate = models.IntegerField(null=True)
-#     noi_dung = models.TextField()
-#     phim_id = models.ForeignKey(Phim, on_delete= models.CASCADE)
+# class Movie_Rating(models.Model):
+#     rate = models.IntegerField(default=5)
+#     content_rate = models.TextField()
+#     movie_id = models.ForeignKey(Movie, on_delete= models.CASCADE)
 #     khach_hang_id = models.ForeignKey(KhachHang, on_delete= models.CASCADE)
 
 

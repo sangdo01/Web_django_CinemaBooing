@@ -1,31 +1,53 @@
 {% extends "pages/base.html" %}
 {% load static %}
-{% block title %} About Us {%endblock title %} 
+{% block title %} Tin tức {%endblock title %} 
 {% block cssblock %}
-<!-- Google Web Fonts -->
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link
-  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-  rel="stylesheet"/>
 
-<!-- Font Awesome -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
-  rel="stylesheet"/>
-
-<!-- Libraries Stylesheet -->
-<link
-  href="{% static 'pages/lib/owlcarousel/assets/owl.carousel.min.css' %}"
-  rel="stylesheet"/>
-<!-- css for about_us page Stylesheet -->
-
-<!-- Customized Bootstrap Stylesheet -->
-<link href="{% static 'pages/css/style.css' %}" rel="stylesheet" />
+<link href="{% static 'pages/css/movie.css' %}" rel="stylesheet" />
+<link href="{% static 'pages/css/pagination.css' %}" rel="stylesheet" />
 
 {% endblock %}
 {% block content %}
 <div class="container-fluid mt-5 pt-3">
     <div class="container">
+      <div class="products__cards cards">
+          {% for item in page_obj %}
+          <div class="cards__item card">
+            <a href="https://codepen.io/hrshishym/pen/yLEjqEJ">
+              <div class="card__img">
+                <img src="{{item.image.url}}" alt="{{item.title}}" style="height:400px;">
+              </div>
+            </a>              
+              <h3 class="card__title">{{item.title|truncatewords:10}}</h3>
+              <div class="event-card__nav">
+                <a href="{% url 'news-detail' item.id %}" class="event-card__details" style="width: 100%;">Chi tiết</a>                
+                  
+              </div>            
+          </div>          
+          {% endfor %}          
+        </div>
     </div>
+
+     <!-- pagination -->
+      <div class="container-pagination">          
+        <div class="pagination">        
+          <ul class="crumbs">          
+            {% if page_obj.has_previous %}
+              <li><a class="crumb crumb__prev" href="?page=1">&laquo;First</a></li>
+              <li><a class="crumb crumb__prev" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>            
+            {% endif %}            
+            {% for page_number in page_obj.paginator.page_range %}
+                <li><a class="crumb" href="?page={{page_number}}">{{page_number}}</a></li>
+            {% endfor %}
+            {% if page_obj.has_next %}
+              <li><a class="crumb crumb__next" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+              <li><a class="crumb crumb__next" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a></li>       
+            {% endif %}           
+          </ul>
+        </div>
+      </div>
+      {% comment %} <span style="text-align:center; background-color: #1d1f20;">Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</span> {% endcomment %}
+    <!-- end pagination -->
+
 </div>
 {% endblock content %}

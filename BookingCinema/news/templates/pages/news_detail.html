@@ -1,0 +1,31 @@
+{% extends "pages/base.html" %}
+{% load static %} 
+{% block title %} 
+  Tin tức
+{%endblock title %} 
+{% block cssblock %}
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="{% static 'pages/css/movie_detail.css' %}" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+<div class="container-fluid mt-5 pt-3">
+  <div class="container">
+
+    <div class="w3-row w3-padding-64" id="about">
+      <div class="w3-col m6 w3-padding-large w3-hide-small">
+      <img src="{{obj.image.url}}" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+      </div>
+
+      <div class="w3-col m6 w3-padding-large">
+        <h1 class="w3-center">{{obj.title}}</h1><br>
+        <h5 class="w3-center">Thời gian đăng: {{obj.create_at|date:'d-m-Y'}}</h5>
+        {% comment %} <p class="w3-large">The Catering was founded in <span class="w3-tag w3-light-grey">seasonal</span> ingredients.</p> {% endcomment %}
+        <p class="w3-large w3-text-grey w3-hide-medium">{{obj.content|truncatewords:400}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block jsblock %}
+
+{% endblock %}

@@ -213,6 +213,10 @@
     background-color: #666;
     text-decoration: none;
   }
+  .event-card__details:hover {
+    background-color: #fff;
+    color: #000;
+  }
   
   .event-card__tickets {
     border-radius: 0% 0% 5vw 0%;
@@ -225,4 +229,10 @@
     background: -webkit-linear-gradient(to right, #87ceeb, #4682b4);
     text-decoration: none;
   }
+  .event-card__tickets:hover {
+    background-color: #fff;
+    color: #000;
+  }
+
+
 

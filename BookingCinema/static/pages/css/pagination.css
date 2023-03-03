@@ -38,6 +38,9 @@
     color: #fdfdfd;
     border-color: #1d1f20;
   }
+  .crumb:active {
+    background-color: palevioletred;
+  }
 
   
     /* .crumb__prev { margin-right: 0.5rem; cursor: w-resize; }
