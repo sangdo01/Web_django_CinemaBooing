@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-
+    'django.contrib.staticfiles',   
     # my apps
     'home',
     'information',
@@ -87,8 +86,13 @@ WSGI_APPLICATION = 'BookingCinema.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'CinemaBooking',
+        'USER': 'postgres',
+        'PASSWORD': 'sang',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        
     }
 }
 
@@ -141,3 +145,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

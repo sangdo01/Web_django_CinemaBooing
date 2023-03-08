@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import CreateUserForm
 
 
+
 # Create your views here.
 
 # def register(request):
@@ -35,6 +36,7 @@ def registerUser(request):
             return redirect('login')
     context = {'form': form}
     return render(request, 'pages/register.html', context)
+
 
 
 
