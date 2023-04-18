@@ -3,215 +3,7 @@
 {% block title %} Chi tiết phim {%endblock title %} 
 {% block cssblock %}
 
-<style>
-/* css for movie detail */
-.picZoomer {
-    position: relative;
-    /*margin-left: 40px;
-      padding: 15px;*/
-  }
-  .picZoomer-pic-wp {
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-  }
-  .picZoomer-pic-wp:hover .picZoomer-cursor {
-    display: block;
-  }
-  .picZoomer-zoom-pic {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .picZoomer-pic {
-    /*width: 100%;
-      height: 100%;*/
-  }
-  .picZoomer-zoom-wp {
-    display: none;
-    position: absolute;
-    z-index: 999;
-    overflow: hidden;
-    border: 1px solid #eee;
-    height: 460px;
-    margin-top: -19px;
-  }
-  .picZoomer-cursor {
-    display: none;
-    cursor: crosshair;
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    border: 1px solid #eee;
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  .picZoomCursor-ico {
-    width: 23px;
-    height: 23px;
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    background: url(images/zoom-ico.png) left top no-repeat;
-  }
-  
-  .my_img {
-    vertical-align: middle;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    height: 100%;
-  }
-  .piclist li {
-    display: inline-block;
-    width: 90px;
-    height: 114px;
-    border: 1px solid #eee;
-  }
-  .piclist li img {
-    width: 97%;
-    height: auto;
-  }
-  
-  /* custom style */
-  .picZoomer-pic-wp,
-  .picZoomer-zoom-wp {
-    border: 1px solid #eee;
-  }
-  
-  .section-bg {
-    background-color: #fff1e0;
-  }
-  section {
-    padding: 60px 0;
-  }
-  .row-sm .col-md-6 {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  
-  /*===pic-Zoom===*/
-  ._boxzoom .zoom-thumb {
-    width: 90px;
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 0px;
-  }
-  ._boxzoom .zoom-thumb ul.piclist {
-    padding-left: 0px;
-    top: 0px;
-  }
-  ._boxzoom ._product-images {
-    width: 80%;
-    display: inline-block;
-  }
-  ._boxzoom ._product-images .picZoomer {
-    width: 100%;
-  }
-  ._boxzoom ._product-images .picZoomer .picZoomer-pic-wp img {
-    left: 0px;
-  }
-  ._boxzoom ._product-images .picZoomer img.my_img {
-    width: 100%;
-  }
-  .piclist li img {
-    height: 100px;
-    object-fit: cover;
-  }
-  
-  /*======products-details=====*/
-  ._product-detail-content {
-    background: #fff;
-    padding: 15px;
-    border: 1px solid lightgray;
-  }
-  ._product-detail-content p._p-name {
-    color: #31404B;
-    font-size: 30px;
-    border-bottom: 1px solid lightgray;
-    padding-bottom: 12px;
-  }
-  .p-list span {
-    margin-right: 15px;
-  }
-  .p-list span.price {
-    font-size: 25px;
-    color: #318234;
-  }
-  ._p-qty > span {
-    color: black;
-    margin-right: 15px;
-    font-weight: 500;
-  }
-  ._p-qty .value-button {
-    display: inline-flex;
-    border: 0px solid #ddd;
-    margin: 0px;
-    width: 30px;
-    height: 35px;
-    justify-content: center;
-    align-items: center;
-    background: #fd7f34;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    color: #fff;
-  }
-  
-  ._p-qty .value-button {
-    border: 0px solid #fe0000;
-    height: 35px;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  ._p-qty input#number {
-    text-align: center;
-    border: none;
-    border-top: 1px solid #fe0000;
-    border-bottom: 1px solid #fe0000;
-    margin: 0px;
-    width: 50px;
-    height: 35px;
-    font-size: 14px;
-    box-sizing: border-box;
-  }
-  ._p-add-cart {
-    margin-left: 0px;
-    margin-bottom: 15px;
-  }
-  .p-list {
-    margin-bottom: 10px;
-  }
-  ._p-features > span {
-    display: block;
-    font-size: 16px;
-    color: #000;
-    font-weight: 500;
-  }
-  ._p-add-cart .buy-btn {
-    background-color: #fd7f34;
-    color: #fff;
-  }
-  ._p-add-cart .btn {
-    text-transform: capitalize;
-    padding: 6px 20px;
-    /* width: 200px; */
-    border-radius: 52px;
-  }
-  ._p-add-cart .btn {
-    margin: 0px 8px;
-  }
-
-  .text-item{
-    margin-left: 5px;font-weight: 600;font-family: 'Open Sans';color: #fd9393 !important;font-style: italic;
-  }
-</style>
+<link href="{% static 'pages/css/movie_detail.css' %}" rel="stylesheet" />
 
 {% endblock %}
 {% block content %}
@@ -236,15 +28,33 @@
                     <p class="_p-name"> {{movie.movie_name}} </p>
                     <div class="_p-price-box">
                         <div class="p-list" style="align-items: flex-start; flex-direction: column;">
-                            <span class="text-item"> Ngày công chiếu: <i class="fa fa-inr"></i></span>
-                            <span> {{movie.release_date| date:'d-m-Y'}} </span>
-                            <p class="text-item">Thời lượng phim: </p>
+                          <div class="movie-castcrew">
+                            <span class="title"> Ngày công chiếu:</span>
+                            <span class="name"> {{movie.release_date| date:'d-m-Y'}} </span>
+                          </div>
+                          <div class="movie-castcrew">
+                            <span class="title">Thời lượng phim: </span>
                             <span> {{movie.time_of_movie}} phút </span>
-                            <p class="text-item">Đạo Diễn: </p>
-                            <p class="text-item">Diễn Viên: </p>                                                 
-                        </div>
-                        <div class="_p-features">
-                        <span> {{movie.content}}
+                          </div>
+                          <div class="movie-castcrew">
+                            <span class="title">Đạo Diễn: </span>
+                          </div>
+                          <div class="movie-castcrew">
+                            <span class="title">Diễn Viên: </span>   
+                          </div>
+                          <div class="movie-castcrew">
+                            <span class="title">Thể Loại: </span>   
+                          </div>
+                          <div class="movie-castcrew">
+                            <span class="title">Ngôn Ngữ: </span>  
+                            <span>{{movie.language}}</span> 
+                          </div>
+                          <div class="movie-castcrew">
+                            <span class="title">Đánh giá: </span>   
+                            <span><i class="fa fa-star checked"></i> {{avg_rate}} / 5</span>
+                          </div>                            
+                     
+                                                                          
                         </div>
                         <ul class="spe_ul"></ul>
                         <div class="_p-qty-and-cart">
@@ -262,6 +72,108 @@
                     </div>
                 </div>
                 </div>
+
+                <div>
+                  <div>
+                    {% comment %} <p>NỘI DUNG PHIM</p> {% endcomment %}
+
+                  </div> 
+                  <div class="tabs">
+                    <div class="tab-2">
+                        <label for="tab2-1"><h5>Nội dung phim</h5></label>
+                        
+                        <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
+                        <div>
+                            <h6>Tóm tắt</h6>
+                            <p>{{movie.content}}</p>
+                        </div>
+                    </div>
+                    <div class="tab-2">
+                        <label for="tab2-2"><h5>Đánh giá <span>({{reviews.all.count}})</span></h5></label>
+                        
+                        <input id="tab2-2" name="tabs-two" type="radio">
+                        <div>
+                            <h5>Đánh giá về phim</h5>
+                            {% if reviews %}
+                              {% for review in reviews %}
+                              <div>
+                                <div><span>{{review.created_at|date:'d-m-Y'}}</span></div>
+                                <div>
+                                  <span class="heading">{{review.user.username}}</span>
+                                  {% for i in qty_star %}
+                                    {% if i <= review.rate %}
+                                      <span class="fa fa-star checked"></span>
+                                      {% else %}
+                                        <span class="fa fa-star"></span>
+                                    {% endif %}
+                                    
+                                  {% endfor %}
+                                  <p style="margin-left:35px">{{review.review}}</p>
+                                  <hr style="border:1.5px solid #808080">                              
+                                </div>
+                              </div>
+                            {% endfor %}
+                            {% else %}
+                              <p>Chưa có bình luận nào về phim</p>
+
+
+                            {% endif %}
+                           
+                            
+
+                            
+                            <div>
+                              {% if messages %}
+                                {% for message in messages  %}
+                                  <div class="alert alert-{{ message.tags }} role="alert">
+                                    {{ message }}
+                                  </div>
+                                {% endfor %}
+                              {% endif %}
+
+                              
+                              <label for="rate" style="float: left; "><h6>Đánh giá:</h6></label>
+                              <form class="review-form" action="{% url 'addreview' movie.id %}" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                  <div class="rate" style="margin-bottom:40px;">
+                                    <input type="radio" id="star5" name="rate" value="5" />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="rate" value="4" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="rate" value="3" />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="rate" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="rate" value="1" />
+                                    <label for="star1" title="text">1 star</label>
+                                  </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                  <textarea name="review" id="cmt" rows="5" cols="100" placeholder="Nhập bình luận ..."></textarea>
+                                </div>
+                                <br />
+                                {% if user.is_authenticated %}
+                                  <button style="font-size: 24px; margin-left: 75px" class="btn btn-warning" >Gửi</button>
+                                  {% else %}
+                                    <p>Bạn cần phải <a href="{% url 'login' %}">đăng nhập</a> để đánh giá về phim </p>
+                                {% endif %}
+
+
+                              </form>
+                                                        
+
+                                    
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>                 
+                  
+                </div>
+
             </div>
             </section>
 
