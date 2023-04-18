@@ -3,6 +3,8 @@ from information.models import Directors, Actor
 from datetime import datetime 
 from django.template.defaultfilters import slugify
 import os
+
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Movie(models.Model):
@@ -15,6 +17,12 @@ class Movie(models.Model):
         if instance:
             return os.path.join("banner", instance)
         return None
+    
+    # def getCategories(self):
+    #     # list_cate = Movie_Detail.objects.filter(movie_id = self.id)
+    #     return  (Movie_Detail.objects.values_list('movie_id').get(movie_id = self.id))
+
+        
 
     movie_name = models.CharField(max_length= 500)
     content = models.TextField()
@@ -28,36 +36,58 @@ class Movie(models.Model):
     is_showing = models.IntegerField(default= 2)
     # status = 1(show movie), = 2 (hide movie)
     status = models.IntegerField(default= 2)
-    directors_id = models.ForeignKey(Directors, on_delete= models.CASCADE, null= True)
+    directors = models.ForeignKey(Directors, on_delete= models.CASCADE, null= True, blank=True)
+    actors = models.ManyToManyField(Actor, through='Movie_Actor')
+
+
 
     def __str__(self):
         return self.movie_name
 
 
 
+class Genre(models.Model):
+    genre_name = models.CharField(max_length=255, unique=True)
+    movies = models.ManyToManyField(Movie, through='Movie_Genre')
+
+
+    def __str__(self):
+        return self.genre_name
+
+
 class Movie_Genre(models.Model):
-    movie_genre_name = models.CharField(max_length=255)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.movie_genre_name
-
-
-class Movie_Detail(models.Model):
-    movie_id = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    movie_genre_id = models.ForeignKey(Movie_Genre, on_delete=models.CASCADE)
-
-    def __str__(self):
-        rs = 'id: '+ str(self.pk) + '\tmovie_id: ' + str(self.movie_id) + '\tgenre_id: ' + str(self.movie_genre_id)
+        rs = 'id: '+ str(self.pk) + '\tmovie: ' + str(self.movie) + '\tgenre: ' + str(self.genre)
         return rs
 
 
 class Movie_Actor(models.Model):
-    movie_id = models.ForeignKey(Movie, on_delete = models.CASCADE)
-    director_id = models.ForeignKey(Actor, on_delete = models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete = models.CASCADE)
+    actor = models.ForeignKey(Actor, on_delete = models.CASCADE)
 
     def __str__(self):
-        rs = 'id: '+ str(self.pk) + '\tmovie_id: ' + str(self.movie_id) + '\tdirector_id: ' + str(self.director_id)
+        rs = 'id: '+ str(self.pk) + '\tmovie: ' + str(self.movie) + '\tactor: ' + str(self.actor)
         return rs
+
+
+class ReviewRating(models.Model):
+    STATUS = (
+        ('New', 'New'),
+        ('True', 'True'),
+        ('False', 'False'),
+    )
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.TextField(max_length=500, blank=True)
+    rate = models.IntegerField()
+    status = models.CharField(max_length=10, choices=STATUS, default='New')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    # def __str__(self):
+    #     return self.moive
 
 
 # class Movie_Rating(models.Model):

@@ -8,9 +8,9 @@ class Actor(models.Model):
         return None
 
     actor_name = models.CharField(max_length=255)
-    date = models.DateTimeField(null=True)
-    image = models.ImageField(default= 'default/user.png',upload_to= image_upload_to, max_length=255, null= True)
-    description = models.TextField(null= True)
+    date = models.DateTimeField(null=True, blank=True)
+    image = models.ImageField(default= 'default/user.png',upload_to= image_upload_to, max_length=255, null= True, blank=True)
+    description = models.TextField(null= True, blank=True)
 
     def __str__(self):
         return self.actor_name
@@ -24,9 +24,9 @@ class Directors(models.Model):
         return None
 
     directors_name = models.CharField(max_length=255)
-    year_of_birth = models.DateTimeField(null=True)
-    image = models.ImageField(default= 'default/user.png', upload_to= image_upload_to, max_length=500, null= True)
-    descripton = models.TextField(null= True)
+    year_of_birth = models.DateTimeField(null=True, blank=True)
+    image = models.ImageField(default= 'default/user.png', upload_to= image_upload_to, max_length=500, null= True, blank=True)
+    descripton = models.TextField(null= True, blank=True)
 
     def __str__(self):
         return self.directors_name
