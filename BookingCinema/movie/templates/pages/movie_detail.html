@@ -51,7 +51,7 @@
                           </div>
                           <div class="movie-castcrew">
                             <span class="title">Đánh giá: </span>   
-                            <span><i class="fa fa-star checked"></i> {{avg_rate}} / 5</span>
+                            <span> {{avg_rate}} / 5 <i class="fa fa-star checked"></i></span>
                           </div>                            
                      
                                                                           
@@ -130,10 +130,11 @@
                                   </div>
                                 {% endfor %}
                               {% endif %}
+                            </div>
 
                               
                               <label for="rate" style="float: left; "><h6>Đánh giá:</h6></label>
-                              <form class="review-form" action="{% url 'addreview' movie.id %}" method="post">
+                              <form class="form-row" action="{% url 'addreview' movie.id %}" method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
                                   <div class="rate" style="margin-bottom:40px;">
@@ -151,11 +152,11 @@
                                 </div>
                                 <br />
                                 <div class="form-group">
-                                  <textarea name="review" id="cmt" rows="5" cols="100" placeholder="Nhập bình luận ..."></textarea>
+                                  <textarea name="review" class="form-control" rows="5" cols="100" placeholder="Nhập bình luận ..."></textarea>
                                 </div>
                                 <br />
                                 {% if user.is_authenticated %}
-                                  <button style="font-size: 24px; margin-left: 75px" class="btn btn-warning" >Gửi</button>
+                                  <button style="margin-left: 10px" class="btn btn-primary font-weight-semi-bold px-4" >Gửi</button>
                                   {% else %}
                                     <p>Bạn cần phải <a href="{% url 'login' %}">đăng nhập</a> để đánh giá về phim </p>
                                 {% endif %}

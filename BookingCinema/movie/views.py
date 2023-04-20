@@ -63,7 +63,11 @@ def MovieDetail(request, id):
     list_rate = []
     for item in reviews:
         list_rate.append(item.rate)
-    avg_rate =round(sum(list_rate) / len(list_rate), 1) 
+    try:
+        avg_rate = round(sum(list_rate) / len(list_rate), 1) 
+    except ZeroDivisionError:
+        avg_rate = "Chưa có đánh giá"
+    
     context = {
         'movie': movie,
         'reviews': reviews,

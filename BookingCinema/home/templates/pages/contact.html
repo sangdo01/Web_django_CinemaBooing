@@ -11,12 +11,32 @@ Contact
 {% block content %}
     <!-- Contact Start -->
     <div class="container-fluid mt-5 pt-3">
-        <div class="container">
+       
+        <div class="container">            
             <div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1959.2797297711288!2d106.78583863927038!3d10.844986507275006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752713c6a080c9%3A0xd8cd79fa7981bd16!2zMjY5IEzDqiBWxINuIFZp4buHdCwgSGnhu4dwIFBow7osIFF14bqtbiA5LCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1681971932153!5m2!1sen!2s"
+                                     width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>       
                 <div class="col-lg-12">
                     <div class="section-title mb-0">
                         <h4 class="m-0 text-uppercase font-weight-bold">Để lại lời nhắn</h4>
                     </div>
+                  
+                        <div>
+                            {% if messages %}
+                            {% for message in messages  %}
+                                <div class="alert alert-{{ message.tags }} role="alert">
+                                {{ message }}
+                                </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+             
+                    
                     <div class="bg-white border border-top-0 p-4 mb-3">
                         <div class="mb-4">
                             <p class="mb-4">Nếu bạn có câu hỏi liên quan đến dịch vụ của chúng tôi, vui lòng liên hệ với chúng tôi bằng cách sử dụng mẫu dưới đây. </p>
@@ -43,24 +63,25 @@ Contact
                             </div>
                         </div>
                         <h6 class="text-uppercase font-weight-bold mb-3">Liên hệ</h6>
-                        <form>
+                        <form action"" method="post">
+                            {% csrf_token %}
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control p-4" placeholder="Nhập tên" required="required"/>
+                                        <input name="name" type="text" class="form-control p-4" placeholder="Nhập tên" required="required"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="email" class="form-control p-4" placeholder="Nhập Email" required="required"/>
+                                        <input name="email" type="email" class="form-control p-4" placeholder="Nhập Email" required="required"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control p-4" placeholder="Tiêu đề" required="required"/>
+                                <input name="subject" type="text" class="form-control p-4" placeholder="Tiêu đề" required="required"/>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="4" placeholder="Nội dung" required="required"></textarea>
+                                <textarea name="message" class="form-control" rows="4" placeholder="Nội dung" required="required"></textarea>
                             </div>
                             <div>
                                 <button class="btn btn-primary font-weight-semi-bold px-4" style="height: 50px;"

@@ -90,12 +90,6 @@ class ReviewRating(models.Model):
     #     return self.moive
 
 
-# class Movie_Rating(models.Model):
-#     rate = models.IntegerField(default=5)
-#     content_rate = models.TextField()
-#     movie_id = models.ForeignKey(Movie, on_delete= models.CASCADE)
-#     khach_hang_id = models.ForeignKey(KhachHang, on_delete= models.CASCADE)
-
 
 # class RapChieu(models.Model):
 #     ten_rap = models.CharField(max_length=255)

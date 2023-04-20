@@ -1,15 +1,15 @@
 from django.shortcuts import render
 from django.views import View
+from .forms import ContactForm
 from movie.models import Movie
 from news.models import News
+from django.contrib import messages
 
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 # Create your views here.
 
 
-# def index(request):
-#     return render(request, 'pages/index.html')
-def Contact(request):
-    return render(request, 'pages/contact.html')
 
 
 class HomeView(View):
@@ -27,3 +27,25 @@ class HomeView(View):
             'news': news,
         }
         return render(request, 'pages/index.html', context)
+    
+
+
+def Contact(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            html = render_to_string('pages/email/contact_form.html', {
+                'name': name,
+                'email': email,
+                'subject': subject,
+                'message': message,
+            })
+            form.save()
+            messages.success(request, 'Đánh giá của bạn đã được gửi')
+            send_mail("The contact form subject", "This is message", "dvs@gmail.com", ['example@gmail.com'], html_message=html)
+            return render(request, 'pages/contact.html')
+    return render(request, 'pages/contact.html')
