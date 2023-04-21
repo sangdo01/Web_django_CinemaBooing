@@ -58,14 +58,24 @@ def ComingSoon(request):
 def MovieDetail(request, id):
     context = {}
     movie = Movie.objects.get(id = id)
+    dicrectors = movie.directors
+    actors = movie.actors.through.objects.filter(movie=movie)
+    genres = movie.genre_set.all()
     reviews = ReviewRating.objects.filter(movie_id = id).order_by('-created_at')
     qty_star = [1, 2, 3, 4, 5]
     list_rate = []
     for item in reviews:
         list_rate.append(item.rate)
-    avg_rate =round(sum(list_rate) / len(list_rate), 1) 
+    try:
+        avg_rate = round(sum(list_rate) / len(list_rate), 1) 
+    except ZeroDivisionError:
+        avg_rate = "Chưa có đánh giá"
+    
     context = {
         'movie': movie,
+        'dicrectors': dicrectors,
+        'actors': actors,
+        'genres': genres,
         'reviews': reviews,
         'qty_star': qty_star,
         'avg_rate': avg_rate,
@@ -89,4 +99,7 @@ def AddReviewRating(request, id):
             messages.success(request, 'Đánh giá của bạn đã được gửi')
             return HttpResponseRedirect(url)
     return HttpResponseRedirect(url)
+
+
+
     

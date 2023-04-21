@@ -7,6 +7,7 @@ import os
 from django.contrib.auth.models import User
 # Create your models here.
 
+
 class Movie(models.Model):
     def image_movie_upload_to(self, instance = None):
         if instance:
@@ -20,9 +21,7 @@ class Movie(models.Model):
     
     # def getCategories(self):
     #     # list_cate = Movie_Detail.objects.filter(movie_id = self.id)
-    #     return  (Movie_Detail.objects.values_list('movie_id').get(movie_id = self.id))
-
-        
+    #     return  (Movie_Detail.objects.values_list('movie_id').get(movie_id = self.id))     
 
     movie_name = models.CharField(max_length= 500)
     content = models.TextField()
@@ -39,8 +38,6 @@ class Movie(models.Model):
     directors = models.ForeignKey(Directors, on_delete= models.CASCADE, null= True, blank=True)
     actors = models.ManyToManyField(Actor, through='Movie_Actor')
 
-
-
     def __str__(self):
         return self.movie_name
 
@@ -50,7 +47,6 @@ class Genre(models.Model):
     genre_name = models.CharField(max_length=255, unique=True)
     movies = models.ManyToManyField(Movie, through='Movie_Genre')
 
-
     def __str__(self):
         return self.genre_name
 
@@ -59,18 +55,10 @@ class Movie_Genre(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
 
-    def __str__(self):
-        rs = 'id: '+ str(self.pk) + '\tmovie: ' + str(self.movie) + '\tgenre: ' + str(self.genre)
-        return rs
-
 
 class Movie_Actor(models.Model):
     movie = models.ForeignKey(Movie, on_delete = models.CASCADE)
     actor = models.ForeignKey(Actor, on_delete = models.CASCADE)
-
-    def __str__(self):
-        rs = 'id: '+ str(self.pk) + '\tmovie: ' + str(self.movie) + '\tactor: ' + str(self.actor)
-        return rs
 
 
 class ReviewRating(models.Model):
@@ -89,12 +77,6 @@ class ReviewRating(models.Model):
     # def __str__(self):
     #     return self.moive
 
-
-# class Movie_Rating(models.Model):
-#     rate = models.IntegerField(default=5)
-#     content_rate = models.TextField()
-#     movie_id = models.ForeignKey(Movie, on_delete= models.CASCADE)
-#     khach_hang_id = models.ForeignKey(KhachHang, on_delete= models.CASCADE)
 
 
 # class RapChieu(models.Model):
