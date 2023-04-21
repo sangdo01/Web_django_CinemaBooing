@@ -25,7 +25,7 @@
         <div class="products__cards cards">
           {% for item in page_obj %}
           <div class="cards__item card">
-            <a href="https://codepen.io/hrshishym/pen/yLEjqEJ">
+            <a href="{% url 'moviedetail' item.id %}">
               <div class="card__img">
                 <img src="{{item.image.url}}" alt="{{item.movie_name}}" style="height:400px;">
               </div>

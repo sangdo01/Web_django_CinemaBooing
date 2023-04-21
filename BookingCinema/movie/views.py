@@ -93,4 +93,7 @@ def AddReviewRating(request, id):
             messages.success(request, 'Đánh giá của bạn đã được gửi')
             return HttpResponseRedirect(url)
     return HttpResponseRedirect(url)
+
+
+
     

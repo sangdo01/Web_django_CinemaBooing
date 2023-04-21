@@ -7,6 +7,7 @@ from django.contrib import messages
 
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.conf import settings
 # Create your views here.
 
 
@@ -46,6 +47,18 @@ def Contact(request):
             })
             form.save()
             messages.success(request, 'Đánh giá của bạn đã được gửi')
-            send_mail("The contact form subject", "This is message", "dvs@gmail.com", ['example@gmail.com'], html_message=html)
+            send_mail(subject, message, email, [settings.EMAIL_HOST], html_message=html)
             return render(request, 'pages/contact.html')
     return render(request, 'pages/contact.html')
+
+
+def SearchResult(request):
+    context = {}
+    if request.method == 'POST':
+        search = request.POST.get('search', False)
+        context['search'] = search
+
+        search_result = Movie.objects.filter(movie_name__contains=search.upper(), status = 1)
+        context['search_result'] = search_result
+        return render(request, 'pages/search_result.html', context)
+    return render(request, 'pages/search_result.html', context)

@@ -68,12 +68,12 @@ Contact
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input name="name" type="text" class="form-control p-4" placeholder="Nhập tên" required="required"/>
+                                        <input name="name" value="{{ request.user.username }}" type="text" class="form-control p-4" placeholder="Nhập tên" required="required"/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input name="email" type="email" class="form-control p-4" placeholder="Nhập Email" required="required"/>
+                                        <input name="email" value="{{ request.user.email }}" type="email" class="form-control p-4" placeholder="Nhập Email" required="required"/>
                                     </div>
                                 </div>
                             </div>

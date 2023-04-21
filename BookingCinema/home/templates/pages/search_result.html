@@ -1,0 +1,62 @@
+{% extends "pages/base.html" %} 
+{% load static %} 
+{% block title %} Tìm Kiếm {%endblock title %} 
+{% block cssblock %}
+
+<link href="{% static 'pages/css/movie.css' %}" rel="stylesheet" />
+<link href="{% static 'pages/css/pagination.css' %}" rel="stylesheet" />
+
+{% endblock %}
+{% block content %}
+<div class="container-fluid mt-5 pt-3">
+  <div class="container">
+    {% if search %}
+    <div>
+      <h5 class="keyword">Kết quả tìm kiếm cho từ khóa: {{ search }}</h5>
+    </div>
+
+    <div class="row">
+      <div>
+        <div class="products__cards cards">
+          {% for item in search_result %}
+          <div class="cards__item card">
+            <a href="{% url 'moviedetail' item.id %}">
+              <div class="card__img">
+                <img
+                  src="{{item.image.url}}"
+                  alt="{{item.movie_name}}"
+                  style="height: 400px"
+                />
+              </div>
+            </a>
+            <h3 class="card__title">{{item.movie_name|truncatewords:18}}</h3>
+            <div class="event-card__nav">
+              {% if item.is_showing == 1 %}
+                <a
+                  href="{% url 'moviedetail' item.id %}"
+                  class="event-card__details"
+                  >Chi tiết</a
+                >
+                <a href="#" class="event-card__tickets">Mua vé</a>
+              {% else %}
+                <a
+                  href="{% url 'moviedetail' item.id %}"
+                  class="event-card__details" style="width:100%"
+                  >Chi tiết</a
+                >
+
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+      {% else %}
+        <h5>Bạn chưa nhập từ khóa tìm kiếm</h5>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
+{% block jsblock %}
+{% endblock jsblock %}
