@@ -30,7 +30,6 @@ class HomeView(View):
         return render(request, 'pages/index.html', context)
     
 
-
 def Contact(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
@@ -57,8 +56,8 @@ def SearchResult(request):
     if request.method == 'POST':
         search = request.POST.get('search', False)
         context['search'] = search
-
         search_result = Movie.objects.filter(movie_name__contains=search.upper(), status = 1)
         context['search_result'] = search_result
         return render(request, 'pages/search_result.html', context)
     return render(request, 'pages/search_result.html', context)
+

@@ -217,7 +217,6 @@
     font-weight: 600;
     font-style: italic;
 }
-
  /* css for tabs */
 
 .tabs {
@@ -347,4 +346,9 @@
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
+}
+
+
+.text__content-moviedetail {
+  color: #9ACD32;
 }

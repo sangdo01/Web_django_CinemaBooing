@@ -13,9 +13,3 @@ class Contact(models.Model):
     def __str__(self):
         return self.email
     
-
-# class TinTuc(models.Model):
-#     tieu_de = models.CharField(max_length=500)
-#     anh = models.CharField()
-#     noi_dung = models.TextField()
-#     status = models.IntegerField(default= 1)

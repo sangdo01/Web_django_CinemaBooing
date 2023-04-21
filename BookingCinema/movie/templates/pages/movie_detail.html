@@ -38,12 +38,24 @@
                           </div>
                           <div class="movie-castcrew">
                             <span class="title">Đạo Diễn: </span>
+                            <span><a href="{% url 'directors_detail' dicrectors.id %}" class="text__content-moviedetail"> {{ dicrectors.directors_name }}</a></span>
                           </div>
                           <div class="movie-castcrew">
-                            <span class="title">Diễn Viên: </span>   
+                            <span class="title">Diễn Viên: </span>
+                            {% for actor in actors %}
+                              <span>
+                                <a href="{% url 'actor_detail' actor.id %}" class="text__content-moviedetail"> {{ actor.actor.actor_name }}</a>,
+                              </span>
+                            {% endfor %} 
+                            
                           </div>
                           <div class="movie-castcrew">
-                            <span class="title">Thể Loại: </span>   
+                            <span class="title">Thể Loại: </span>
+                            {% for genre in genres %}
+                              <span>
+                                <a href="" class="text__content-moviedetail"> {{ genre.genre_name }}</a>,
+                              </span>
+                            {% endfor %}    
                           </div>
                           <div class="movie-castcrew">
                             <span class="title">Ngôn Ngữ: </span>  
@@ -52,9 +64,7 @@
                           <div class="movie-castcrew">
                             <span class="title">Đánh giá: </span>   
                             <span> {{avg_rate}} / 5 <i class="fa fa-star checked"></i></span>
-                          </div>                            
-                     
-                                                                          
+                          </div>                                                                                                     
                         </div>
                         <ul class="spe_ul"></ul>
                         <div class="_p-qty-and-cart">
@@ -67,21 +77,15 @@
                             </a>
                             </div>
                         </div>
-
                     </div>
                     </div>
                 </div>
                 </div>
 
                 <div>
-                  <div>
-                    {% comment %} <p>NỘI DUNG PHIM</p> {% endcomment %}
-
-                  </div> 
                   <div class="tabs">
                     <div class="tab-2">
-                        <label for="tab2-1"><h5>Nội dung phim</h5></label>
-                        
+                        <label for="tab2-1"><h5>Nội dung phim</h5></label>                        
                         <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
                         <div>
                             <h6>Tóm tắt</h6>
@@ -89,8 +93,7 @@
                         </div>
                     </div>
                     <div class="tab-2">
-                        <label for="tab2-2"><h5>Đánh giá <span>({{reviews.all.count}})</span></h5></label>
-                        
+                        <label for="tab2-2"><h5>Đánh giá <span>({{reviews.all.count}})</span></h5></label>                        
                         <input id="tab2-2" name="tabs-two" type="radio">
                         <div>
                             <h5>Đánh giá về phim</h5>
@@ -105,8 +108,7 @@
                                       <span class="fa fa-star checked"></span>
                                       {% else %}
                                         <span class="fa fa-star"></span>
-                                    {% endif %}
-                                    
+                                    {% endif %}                                    
                                   {% endfor %}
                                   <p style="margin-left:35px">{{review.review}}</p>
                                   <hr style="border:1.5px solid #808080">                              
@@ -115,13 +117,7 @@
                             {% endfor %}
                             {% else %}
                               <p>Chưa có bình luận nào về phim</p>
-
-
-                            {% endif %}
-                           
-                            
-
-                            
+                            {% endif %}                      
                             <div>
                               {% if messages %}
                                 {% for message in messages  %}
