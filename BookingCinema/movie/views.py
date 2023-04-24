@@ -12,11 +12,17 @@ from statistics import mean
 # Create your views here.
 
 
-def Nowshowing(request):
+def Nowshowing(request, id_genre = None):
     context = {}
-    # movies_now = Movie.objects.all().order_by('release_date')
     movies_now = Movie.objects.filter(status = 1, is_showing = 1)
     movie_genre = Genre.objects.all()
+    if id_genre is not None:
+        genre = Genre.objects.get(id = id_genre)
+        try:
+            movies_now = genre.movies.filter(status = 1, is_showing = 1).order_by('-release_date')
+        except:
+            pass
+            
     paginator = Paginator(movies_now, 6)
     page_number = request.GET.get('page', 1)
     try:
@@ -34,13 +40,16 @@ def Nowshowing(request):
     return render(request, 'pages/nowshowing.html', context) 
 
 
-
-
-def ComingSoon(request):
+def ComingSoon(request, id_genre = None):
     context = {}
-    # movies_come = Movie.objects.all().order_by('release_date')
     movies_come = Movie.objects.filter(status = 1, is_showing = 2)
     movie_genre = Genre.objects.all()
+    if id_genre is not None:
+        genre = Genre.objects.get(id = id_genre)
+        try:
+            movies_come = genre.movies.filter(status = 1, is_showing = 2).order_by('-release_date')
+        except:
+            pass
     paginator = Paginator(movies_come, 6)
     page_number = request.GET.get('page', 1)
     try:
