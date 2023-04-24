@@ -19,6 +19,11 @@ h3{
     box-sizing: border-box;
 }
 
+.container {
+    padding: 16px;
+    background-color: white;
+  }
+
 .responsive {
     padding: 0 6px;
     float: left;
@@ -37,3 +42,41 @@ h3{
         width: 100%;
     }
 }
+
+/* Float four columns side by side */
+.column-rate {
+    float: left;
+    width: 25%;
+    padding: 10px 10px;
+    }
+
+    .row-rate {margin: 0 -5px; width:5900px;}
+
+    /* Clear floats after the columns */
+    .row-rate:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+
+    /* Responsive columns */
+    @media screen and (max-width: 600px) {
+    .column-rate {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+    }
+    }
+
+    /* Style the counter cards */
+    .card-rate {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #444;
+    color: white;
+    }
+
+    .fafa-rate {font-size:100px;}
+
+

@@ -31,9 +31,7 @@ def Nowshowing(request, id_genre = None):
         page_obj = paginator.page(1)
     except EmptyPage:
         page_obj = paginator.page(paginator.num_pages)
-    
     # page_obj.adjusted_elided_pages = paginator.get_elided_page_range('page')
-    # context['movies_now'] = movies_now
     context['movie_genre'] = movie_genre
     context['page_obj'] = page_obj
 
@@ -58,7 +56,6 @@ def ComingSoon(request, id_genre = None):
         page_obj = paginator.page(1)
     except EmptyPage:
         page_obj = paginator.page(paginator.num_pages)
-    # context['movies_come'] = movies_come
     context['movie_genre'] = movie_genre
     context['page_obj'] = page_obj
     return render(request, 'pages/comingsoon.html', context) 
@@ -78,8 +75,7 @@ def MovieDetail(request, id):
     try:
         avg_rate = round(sum(list_rate) / len(list_rate), 1) 
     except ZeroDivisionError:
-        avg_rate = "Chưa có đánh giá"
-    
+        avg_rate = "Chưa có đánh giá"  
     context = {
         'movie': movie,
         'dicrectors': dicrectors,
