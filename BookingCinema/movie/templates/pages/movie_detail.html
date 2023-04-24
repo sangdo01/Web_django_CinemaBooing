@@ -42,18 +42,27 @@
                           </div>
                           <div class="movie-castcrew">
                             <span class="title">Diễn Viên: </span>
-                            {% for actor in actors %}
+                            {% if actors %}
+                              {% for actor in actors %}
+                                <span>
+                                  <a href="{% url 'actor_detail' actor.id %}" class="text__content-moviedetail"> {{ actor.actor.actor_name }}</a>,
+                                </span>
+                            {% endfor %}
+                            {% else %}
                               <span>
-                                <a href="{% url 'actor_detail' actor.id %}" class="text__content-moviedetail"> {{ actor.actor.actor_name }}</a>,
+                                Chưa có diễn viên
                               </span>
-                            {% endfor %} 
-                            
+                            {% endif %}                                      
                           </div>
                           <div class="movie-castcrew">
                             <span class="title">Thể Loại: </span>
                             {% for genre in genres %}
                               <span>
-                                <a href="" class="text__content-moviedetail"> {{ genre.genre_name }}</a>,
+                                {% if movie.is_showing == 1 %}
+                                  <a href="{% url 'nowshowing' genre.id %}" class="text__content-moviedetail"> {{ genre.genre_name }}</a>,
+                                {% else %}
+                                  <a href="{% url 'comingsoon' genre.id %}" class="text__content-moviedetail"> {{ genre.genre_name }}</a>,
+                                {% endif %}
                               </span>
                             {% endfor %}    
                           </div>
@@ -126,9 +135,7 @@
                                   </div>
                                 {% endfor %}
                               {% endif %}
-                            </div>
-
-                              
+                            </div>                            
                               <label for="rate" style="float: left; "><h6>Đánh giá:</h6></label>
                               <form class="form-row" action="{% url 'addreview' movie.id %}" method="post">
                                 {% csrf_token %}
@@ -156,12 +163,7 @@
                                   {% else %}
                                     <p>Bạn cần phải <a href="{% url 'login' %}">đăng nhập</a> để đánh giá về phim </p>
                                 {% endif %}
-
-
-                              </form>
-                                                        
-
-                                    
+                              </form>                                    
                             </div>
                             
                         </div>

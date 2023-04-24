@@ -19,9 +19,14 @@ class Movie(models.Model):
             return os.path.join("banner", instance)
         return None
     
-    # def getCategories(self):
-    #     # list_cate = Movie_Detail.objects.filter(movie_id = self.id)
-    #     return  (Movie_Detail.objects.values_list('movie_id').get(movie_id = self.id))     
+    def getListGenreName(self):
+        list_genre = []
+        movie = Movie.objects.get(id = self.id)
+        for genre in movie.genre_set.all():
+            list_genre.append(genre)
+        # list_genre = Movie.objects.filter(id = self.id).values('genre__name')
+        return list_genre
+        # return  (Movie_Detail.objects.values_list('movie_id').get(movie_id = self.id))     
 
     movie_name = models.CharField(max_length= 500)
     content = models.TextField()

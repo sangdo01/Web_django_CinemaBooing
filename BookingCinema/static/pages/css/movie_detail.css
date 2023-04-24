@@ -349,6 +349,10 @@
 }
 
 
-.text__content-moviedetail {
+.text__content-moviedetail a {
   color: #9ACD32;
+}
+
+.text__content-moviedetail a:hover {
+  text-decoration: none;
 }

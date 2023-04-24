@@ -1,3 +1,4 @@
+
 .button-chitiet-trailer{
     position: relative;
     margin-bottom: 35px;
@@ -118,6 +119,11 @@
     padding: 2px 8px;
 }
 
+.list-group-item.slider {
+  color: white; 
+  font-size: 20px;
+}
+
 
 
 
@@ -233,4 +239,13 @@
     background-color: #fff;
     color: #000;
   }
+
+
+  /* css for info actor and directors page */
+
+
+  
+
+
+
 

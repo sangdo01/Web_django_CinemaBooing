@@ -5,22 +5,7 @@ Home
 {% endblock title %}
 
 {% block cssblock %}
-    {% comment %} <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="{% static 'pages/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{% static 'pages/css/style.css' %}" rel="stylesheet"> {% endcomment %}
     <link href="{% static 'pages/css/movie.css' %}" rel="stylesheet">
-    <style>
-        
-    </style>
 
 {% endblock %}
 
@@ -39,17 +24,18 @@ Home
                                     <div>
                                         <ul class="list-group list-group-horizontal">
                                         {% if item.time_of_movie %}
-                                            <li class= "list-group-item" style ="color: white; font-size: 20px">{{item.time_of_movie}} phút</li>                                    
+                                            <li class= "list-group-item slider">{{item.time_of_movie}} phút</li>                                    
                                         {% else %}
-                                            <li class="list-group-item" style ="color: white; font-size: 20px">Chưa xác định</li>  
+                                            <li class="list-group-item slider">Chưa xác định</li>  
                                         {% endif %}
-                                            <li class="list-group-item" style ="color: white; font-size: 20px">{{item.release_date|date:'d-m-Y'}}</li>
+                                            <li class="list-group-item slider">{{item.release_date|date:'d-m-Y'}}</li>
                                         </ul>
                                     </div>
                                     <div class="menu__movie-genre">
-                                        <ul class="movie-cate">                                                                                                                                                          
-                                            <li><a>Link 1</a></li>
-                                            <li><a>Link 1</a></li>                                            
+                                        <ul class="movie-cate">
+                                            {% for genre in item.getListGenreName %}
+                                                <li><a>{{ genre.genre_name }}</a></li>
+                                            {% endfor %}                                                                                                                                                                                                   
                                         </ul>
                                     </div>
                                     
