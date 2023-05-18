@@ -8,5 +8,6 @@ urlpatterns = [
     path('comingsoon/<int:id_genre>', views.ComingSoon, name='comingsoon'),
     path('moviedetail/<int:id>', views.MovieDetail, name='moviedetail'),
     path('addreview/<int:id>', views.AddReviewRating, name='addreview'),
-    
+    # api router
+    path('nowshowingview/', views.NowshowingViewSet.as_view()),
 ]

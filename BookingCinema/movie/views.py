@@ -2,15 +2,30 @@
 from audioop import avg
 from django.shortcuts import render 
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
+# rest framework
+from rest_framework import viewsets, generics
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.response import Response  
+
+from django.contrib import messages
+from statistics import mean 
 # import pagination.
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .forms import ReviewRatingForm
 from .models import Movie, Genre, Directors, ReviewRating
-from django.contrib import messages
-from statistics import mean 
+from .serializers import MovieSerializers
 # Create your views here.
 
+
+class NowshowingViewSet(APIView):
+    def get(self, request, *args, **kwargs):
+        result = Movie.objects.filter(status = 1, is_showing = 1) 
+        serializers = MovieSerializers(result, many=True)  
+        return Response({'status': 'success', "movies":serializers.data}, status=200)  
+    
+    
 
 def Nowshowing(request, id_genre = None):
     context = {}

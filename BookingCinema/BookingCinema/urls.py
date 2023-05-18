@@ -21,6 +21,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+# rest framework
+from rest_framework.routers import DefaultRouter
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
@@ -28,6 +32,8 @@ urlpatterns = [
     path('info/', include('information.urls')),
     path('news/', include('news.urls')),
     path('movies/', include('movie.urls')),
+
+    path('api/', include('movie.urls'))  
 ]
 
 # Serving the media files in development mode
