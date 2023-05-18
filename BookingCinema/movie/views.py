@@ -1,6 +1,6 @@
 
 from audioop import avg
-from django.shortcuts import render
+from django.shortcuts import render 
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 # import pagination.
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger

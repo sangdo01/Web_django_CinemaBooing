@@ -1,64 +1,62 @@
-h2{
+/* Page about */
+.title-about h2{
     text-align: center;
     text-transform: uppercase;
     color: #FFCC00 ;
-}
-h5{
+  }
+  .title-about h5{
     text-align: center;
     text-transform: uppercase;
     color: #FFCC00 ;
-}
-
-h3{
+  }
+  
+  .partner-about h3{
     margin-top: 15px;
     text-align: center;
     color:  #FFCC00;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-.container {
+  }
+  
+  
+  /* .container-about {
     padding: 16px;
     background-color: white;
-  }
-
-.responsive {
+  } */
+  
+  .responsive {
     padding: 0 6px;
     float: left;
     width: 24.99999%;    
-}
-
-@media only screen and (max-width: 700px) {
+  }
+  
+  /* @media only screen and (max-width: 700px) {
     .responsive {
         width: 49.99999%;
         margin: 6px 0;
     }
-}
-
-@media only screen and (max-width: 500px) {
+  }
+  
+  @media only screen and (max-width: 500px) {
     .responsive {
         width: 100%;
     }
-}
-
-/* Float four columns side by side */
-.column-rate {
+  } */
+  
+  /* Float four columns side by side */
+  .column-rate {
     float: left;
     width: 25%;
     padding: 10px 10px;
     }
-
+  
     .row-rate {margin: 0 -5px; width:5900px;}
-
+  
     /* Clear floats after the columns */
     .row-rate:after {
     content: "";
     display: table;
     clear: both;
     }
-
+  
     /* Responsive columns */
     @media screen and (max-width: 600px) {
     .column-rate {
@@ -67,7 +65,7 @@ h3{
         margin-bottom: 10px;
     }
     }
-
+  
     /* Style the counter cards */
     .card-rate {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -76,7 +74,6 @@ h3{
     background-color: #444;
     color: white;
     }
-
+  
     .fafa-rate {font-size:100px;}
-
-
+  
