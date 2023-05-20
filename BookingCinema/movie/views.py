@@ -25,7 +25,6 @@ class NowshowingViewSet(APIView):
         serializers = MovieSerializers(result, many=True)  
         return Response({'status': 'success', "movies":serializers.data}, status=200)  
     
-    
 
 def Nowshowing(request, id_genre = None):
     context = {}
